@@ -1,0 +1,107 @@
+:root {
+  --ink: #20283b;
+  --muted: #687086;
+  --paper: #fffdf8;
+  --spark: #ed9254;
+  --line: #eee7dc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 56px 28px 100px;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 90% 0%, #f8e6d5 0, transparent 32rem),
+    var(--paper);
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  line-height: 1.9;
+}
+
+/* ページタイトル */
+h1 {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+h2 {
+  margin: 64px 0 20px;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+h2::after {
+  display: block;
+  width: 48px;
+  height: 3px;
+  margin-top: 12px;
+  border-radius: 2px;
+  background: var(--spark);
+  content: "";
+}
+
+h3 {
+  margin: 36px 0 10px;
+  color: #a85d32;
+  font-size: 1.2rem;
+}
+
+/* 読みやすい本文幅 */
+p {
+  max-width: 68ch;
+  margin: 0 0 20px;
+}
+
+/* 写真を作品カード風に */
+img {
+  display: block;
+  max-width: min(100%, 680px);
+  height: auto;
+  margin: 24px auto;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgb(32 40 59 / 10%);
+}
+
+/* STLリンク */
+a {
+  display: inline-block;
+  margin: 8px 0;
+  padding: 9px 16px;
+  border: 1px solid #e8b28e;
+  border-radius: 999px;
+  color: #9a4e29;
+  background: #fff8f1;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+a:hover {
+  color: white;
+  background: var(--spark);
+  transform: translateY(-2px);
+}
+
+/* スマートフォン */
+@media (max-width: 600px) {
+  body {
+    padding: 32px 18px 64px;
+  }
+
+  h2 {
+    margin-top: 48px;
+  }
+
+  img {
+    border-radius: 12px;
+  }
+}
