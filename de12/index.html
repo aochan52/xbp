@@ -3,8 +3,588 @@
 <head>
     <meta charset="UTF-8">
     <title>XBP_HPsample</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="shortcut icon" href="./images/xbp.ico">
+    <!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="アイデアを試して、手を動かして、かたちにする。制作記録と作品をまとめたポートフォリオ。">
+  <title>AOI — 制作ポートフォリオ</title>
+  <style>
+    :root {
+      --red: #c62835;
+      --red-dark: #8f1725;
+      --ink: #252321;
+      --muted: #77716d;
+      --paper: #fffdfa;
+      --line: #eee8e3;
+      --pink: #f9eeec;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+        "Noto Sans JP", sans-serif;
+      line-height: 1.8;
+    }
+
+    .wrap {
+      width: min(1080px, calc(100% - 48px));
+      margin: auto;
+    }
+
+    header {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-decoration: none;
+    }
+
+    .brand b {
+      color: var(--red);
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    nav a {
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--red);
+    }
+
+    .hero {
+      min-height: 570px;
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      align-items: center;
+      gap: 5%;
+      padding: 60px 0 74px;
+    }
+
+    .eyebrow {
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+    }
+
+    h1 {
+      margin: 18px 0 20px;
+      font-size: clamp(44px, 6vw, 76px);
+      line-height: 1.24;
+      letter-spacing: 0.03em;
+    }
+
+    h1 span {
+      color: var(--red);
+    }
+
+    .hero p {
+      max-width: 450px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 22px;
+      padding: 12px 18px;
+      border-radius: 3px;
+      color: white;
+      background: var(--red);
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .cta:hover {
+      background: var(--red-dark);
+      transform: translateY(-2px);
+    }
+
+    .cta span {
+      font-size: 17px;
+    }
+
+    .hero-visual {
+      min-height: 380px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-radius: 4px;
+      background: var(--pink);
+    }
+
+    .hero-visual::before,
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      border: 1px solid #e9cbc5;
+      border-radius: 50%;
+    }
+
+    .hero-visual::before {
+      width: 330px;
+      height: 330px;
+    }
+
+    .hero-visual::after {
+      width: 250px;
+      height: 250px;
+    }
+
+    .orbit {
+      position: absolute;
+      width: 390px;
+      height: 140px;
+      border: 1px solid #e8c9c4;
+      border-radius: 50%;
+      transform: rotate(-35deg);
+    }
+
+    .hero-visual svg {
+      z-index: 1;
+      width: 66%;
+      max-width: 330px;
+    }
+
+    .spark {
+      position: absolute;
+      z-index: 2;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 0 7px #c6283515;
+    }
+
+    .spark.one {
+      top: 23%;
+      left: 24%;
+    }
+
+    .spark.two {
+      right: 19%;
+      top: 35%;
+      width: 6px;
+      height: 6px;
+    }
+
+    .spark.three {
+      bottom: 22%;
+      left: 30%;
+      width: 5px;
+      height: 5px;
+    }
+
+    section {
+      padding: 72px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .label {
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+    }
+
+    h2 {
+      margin: 6px 0 0;
+      font-size: 27px;
+      letter-spacing: 0.04em;
+    }
+
+    .section-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .all-link {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .all-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .slider-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .slider-button {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--red);
+      background: white;
+      cursor: pointer;
+      font-size: 17px;
+      transition: 0.2s;
+    }
+
+    .slider-button:hover {
+      color: white;
+      border-color: var(--red);
+      background: var(--red);
+    }
+
+    /* 作品カードを横に並べて、左右にスクロールできるようにする */
+    .projects {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      padding: 2px 2px 18px;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: #d9a3a0 #f4efeb;
+    }
+
+    .project {
+      flex: 0 0 calc((100% - 36px) / 3);
+      min-width: 0;
+      color: inherit;
+      text-decoration: none;
+      scroll-snap-align: start;
+    }
+
+    .project-image {
+      height: 220px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #f8f3ef;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .project:hover .project-image {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px #38252212;
+    }
+
+    .project-image svg {
+      width: 56%;
+      height: 75%;
+    }
+
+    .project:nth-child(2) .project-image {
+      background: #f0f1ef;
+    }
+
+    .project:nth-child(3) .project-image {
+      background: #f5f0eb;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+    }
+
+    .project h3 {
+      margin: 6px 0 3px;
+      font-size: 16px;
+    }
+
+    .project p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 10%;
+      align-items: start;
+    }
+
+    .about-copy {
+      color: #5c5753;
+      font-size: 14px;
+    }
+
+    .about-copy p {
+      margin: 0 0 12px;
+    }
+
+    .about-mark {
+      min-height: 190px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 3px solid var(--red);
+      background: #fbf6f2;
+      color: #9e8a83;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+    }
+
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+    }
+
+    @media (max-width: 720px) {
+      .wrap {
+        width: min(100% - 36px, 540px);
+      }
+
+      header {
+        height: 66px;
+      }
+
+      nav {
+        gap: 16px;
+        font-size: 10px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 34px;
+        padding: 48px 0 58px;
+      }
+
+      .hero-visual {
+        min-height: 300px;
+      }
+
+      .project {
+        flex-basis: calc((100% - 14px) / 2);
+      }
+
+      .project-image {
+        height: 180px;
+      }
+
+      section {
+        padding: 54px 0;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .about-mark {
+        min-height: 120px;
+      }
+    }
+
+    @media (max-width: 460px) {
+      nav {
+        gap: 10px;
+      }
+
+      .project {
+        flex-basis: 84%;
+      }
+
+      .project-image {
+        height: 230px;
+      }
+
+      .section-top {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="wrap">
+    <a class="brand" href="#top"><b>AOI</b> / MAKING LOG</a>
+    <nav>
+      <a href="#works">WORKS</a>
+      <a href="#about">ABOUT</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">IDEAS INTO OBJECTS</div>
+        <h1>つくって、<br><span>試して、</span><br>かたちにする。</h1>
+        <p>デジタルファブリケーションを中心に、アイデアが作品になるまでの記録をまとめています。</p>
+        <a class="cta" href="#works">制作を見る <span>↓</span></a>
+      </div>
+
+      <div class="hero-visual" aria-label="制作をイメージした抽象的なイラスト">
+        <div class="orbit"></div>
+        <i class="spark one"></i>
+        <i class="spark two"></i>
+        <i class="spark three"></i>
+
+        <svg viewBox="0 0 340 300" aria-hidden="true">
+          <path d="M69 230 L115 75 Q121 55 137 61 Q153 66 147 84 L121 171 L184 87 Q196 70 210 81 Q223 91 211 107 L157 178 L231 121 Q247 108 258 121 Q270 135 254 148 L183 212 Q162 231 147 251 L76 251Z"
+            fill="#fffdfa" stroke="#c62835" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M77 251 Q112 227 147 251" fill="none" stroke="#c62835" stroke-width="5"/>
+          <path d="M119 79 Q131 84 128 99 M190 90 Q201 98 192 111 M237 128 Q248 137 237 149"
+            fill="none" stroke="#e7c4bd" stroke-width="5" stroke-linecap="round"/>
+          <path d="M54 111 l-15 -8 M271 75 l11 -13 M273 204 l16 3"
+            stroke="#e58a63" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <section id="works">
+      <div class="wrap">
+        <div class="section-top">
+          <div>
+            <div class="label">SELECTED WORKS</div>
+            <h2>制作したもの</h2>
+          </div>
+
+          <div class="section-actions">
+            <a class="all-link" href="#works">すべての作品　↗</a>
+            <div class="slider-buttons">
+              <button class="slider-button" type="button" aria-label="前の作品" data-slide="-1">‹</button>
+              <button class="slider-button" type="button" aria-label="次の作品" data-slide="1">›</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="projects" id="project-slider" tabindex="0"
+          aria-label="制作したもの。左右にスクロールできます">
+
+          <a class="project" href="red-tweezer-design.html">
+            <div class="project-image">
+              <svg viewBox="0 0 180 180" aria-hidden="true">
+                <path d="M49 157 Q50 125 62 94 L84 31 Q89 18 100 24 Q110 30 105 42 L87 94 Q105 59 119 38 Q127 27 137 34 Q146 42 138 53 L111 101 Q129 72 141 64 Q151 57 158 67 Q164 77 153 88 L130 117 Q117 134 123 157Z"
+                  fill="#fffdfa" stroke="#c62835" stroke-width="4"/>
+                <path d="M79 157 Q99 142 123 157" fill="none" stroke="#c62835" stroke-width="4"/>
+              </svg>
+            </div>
+            <div class="project-meta"><span>3D PRINTING</span><span>01</span></div>
+            <h3>線香花火ピンセット</h3>
+            <p>指先のかたちをした、小さな道具。</p>
+          </a>
+
+          <a class="project" href="#works">
+            <div class="project-image">
+              <svg viewBox="0 0 180 180" aria-hidden="true">
+                <path d="M44 54 L136 54 L126 145 L54 145Z" fill="#fff" stroke="#555d58" stroke-width="3"/>
+                <path d="M60 43 L120 43 L136 54 L44 54Z" fill="#d9dfda" stroke="#555d58" stroke-width="3"/>
+                <path d="M67 71h46M64 87h52M62 103h55M60 119h58" stroke="#9ba69d" stroke-width="3"/>
+                <circle cx="90" cy="32" r="8" fill="#c62835"/>
+              </svg>
+            </div>
+            <div class="project-meta"><span>LASER CUTTING</span><span>02</span></div>
+            <h3>レーザーカット作品</h3>
+            <p>素材と形を試した制作記録。</p>
+          </a>
+
+          <a class="project" href="#works">
+            <div class="project-image">
+              <svg viewBox="0 0 180 180" aria-hidden="true">
+                <path d="M50 131 L90 45 L130 131Z" fill="#fff" stroke="#a66f54" stroke-width="3"/>
+                <path d="M65 118 L90 70 L115 118Z" fill="#f4ddd1" stroke="#a66f54" stroke-width="3"/>
+                <circle cx="90" cy="109" r="8" fill="#c62835"/>
+                <path d="M40 144h100" stroke="#a66f54" stroke-width="3"/>
+              </svg>
+            </div>
+            <div class="project-meta"><span>PROTOTYPE</span><span>03</span></div>
+            <h3>アイデアの試作</h3>
+            <p>考えて、つくって、改善する。</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about">
+        <div>
+          <div class="label">ABOUT</div>
+          <h2>ものづくりの記録</h2>
+        </div>
+        <div class="about-copy">
+          <p>思いついたアイデアを、デジタル工作機器や手作業で少しずつ形にしています。</p>
+          <p>このサイトでは、完成した作品だけでなく、試作で気づいたことや制作の過程も紹介します。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© AOI — MAKING LOG</div>
+  </footer>
+
+  <script>
+    const slider = document.querySelector("#project-slider");
+
+    document.querySelectorAll("[data-slide]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const card = slider.querySelector(".project");
+        const gap = 18;
+
+        slider.scrollBy({
+          left:
+            (card.getBoundingClientRect().width + gap) *
+            Number(button.dataset.slide),
+          behavior: "smooth"
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+    
 </head>
 <body>
     <logotohome>
