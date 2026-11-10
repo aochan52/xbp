@@ -10,13 +10,13 @@
   <style>
     :root {
       --red: #c62835;
-      --red-dark:#8f1725;
-      --ink: #252321;
+      --red-dark: #8f1725;
+     --ink: #252321;
       --muted: #77716d;
       --paper: #fffdfa;
       --line: #eee8e3;
       --pink: #f9eeec;
-    }
+     }
 
     * {
       box-sizing: border-box;
@@ -442,7 +442,8 @@
       }
     }
   </style>
-</head>
+  
+<head>
 
 <body>
   <header class="wrap">
