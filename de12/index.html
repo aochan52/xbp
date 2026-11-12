@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="jp">
-<head>
-    <meta charset="UTF-8">
-    <title>XBP_HPsample</title>
-    <!doctype html>
+    <head>
+   <!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
@@ -164,48 +160,29 @@
       height: 250px;
     }
 
-    .orbit {
-      position: absolute;
-      width: 390px;
-      height: 140px;
-      border: 1px solid #e8c9c4;
-      border-radius: 50%;
-      transform: rotate(-35deg);
+    .hero-visual.logo {
+      background: #f9eeec;
     }
 
-    .hero-visual svg {
+    .hero-visual.logo::after {
+      display: none;
+    }
+
+    .hero-visual.logo svg {
+      position: relative;
       z-index: 1;
-      width: 66%;
+      width: min(66%, 330px);
       max-width: 330px;
     }
 
-    .spark {
+    .logo-caption {
       position: absolute;
-      z-index: 2;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--red);
-      box-shadow: 0 0 0 7px #c6283515;
-    }
-
-    .spark.one {
-      top: 23%;
-      left: 24%;
-    }
-
-    .spark.two {
-      right: 19%;
-      top: 35%;
-      width: 6px;
-      height: 6px;
-    }
-
-    .spark.three {
-      bottom: 22%;
-      left: 30%;
-      width: 5px;
-      height: 5px;
+      bottom: 20px;
+      left: 22px;
+      color: #9b625b;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
     }
 
     section {
@@ -221,6 +198,43 @@
       margin-bottom: 28px;
     }
 
+    .work-category {
+      margin-top: 38px;
+    }
+
+    .category-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .category-heading h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .category-heading p {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .category-title {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .empty-category {
+      padding: 28px;
+      border: 1px dashed #dfc7c1;
+      background: #fdf8f5;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
     .label {
       color: var(--red);
       font-size: 11px;
@@ -232,24 +246,6 @@
       margin: 6px 0 0;
       font-size: 27px;
       letter-spacing: 0.04em;
-    }
-
-    .section-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .all-link {
-      color: var(--red);
-      font-size: 12px;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .all-link:hover {
-      text-decoration: underline;
-      text-underline-offset: 4px;
     }
 
     .slider-buttons {
@@ -277,7 +273,6 @@
       background: var(--red);
     }
 
-    /* 作品カードを横に並べて、左右にスクロールできるようにする */
     .projects {
       display: flex;
       gap: 18px;
@@ -315,6 +310,12 @@
     .project-image svg {
       width: 56%;
       height: 75%;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .project:nth-child(2) .project-image {
@@ -359,18 +360,6 @@
 
     .about-copy p {
       margin: 0 0 12px;
-    }
-
-    .about-mark {
-      min-height: 190px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-left: 3px solid var(--red);
-      background: #fbf6f2;
-      color: #9e8a83;
-      font-size: 13px;
-      letter-spacing: 0.14em;
     }
 
     footer {
@@ -421,10 +410,6 @@
         grid-template-columns: 1fr;
         gap: 18px;
       }
-
-      .about-mark {
-        min-height: 120px;
-      }
     }
 
     @media (max-width: 460px) {
@@ -465,21 +450,26 @@
         <a class="cta" href="#works">制作を見る <span>↓</span></a>
       </div>
 
-      <div class="hero-visual" aria-label="制作をイメージした抽象的なイラスト">
-        <div class="orbit"></div>
-        <i class="spark one"></i>
-        <i class="spark two"></i>
-        <i class="spark three"></i>
-
-        <svg viewBox="0 0 340 300" aria-hidden="true">
-          <path d="M69 230 L115 75 Q121 55 137 61 Q153 66 147 84 L121 171 L184 87 Q196 70 210 81 Q223 91 211 107 L157 178 L231 121 Q247 108 258 121 Q270 135 254 148 L183 212 Q162 231 147 251 L76 251Z"
-            fill="#fffdfa" stroke="#c62835" stroke-width="5" stroke-linejoin="round"/>
-          <path d="M77 251 Q112 227 147 251" fill="none" stroke="#c62835" stroke-width="5"/>
-          <path d="M119 79 Q131 84 128 99 M190 90 Q201 98 192 111 M237 128 Q248 137 237 149"
-            fill="none" stroke="#e7c4bd" stroke-width="5" stroke-linecap="round"/>
-          <path d="M54 111 l-15 -8 M271 75 l11 -13 M273 204 l16 3"
-            stroke="#e58a63" stroke-width="4" stroke-linecap="round"/>
+      <div class="hero-visual logo" aria-label="赤く着色したXビジネスのロゴ">
+        <svg viewBox="0 0 542 553" role="img" aria-labelledby="logo-title">
+          <title id="logo-title">赤いXビジネスロゴ</title>
+          <defs>
+            <filter id="red-logo" color-interpolation-filters="sRGB">
+              <feColorMatrix
+                type="matrix"
+                values="0 0 0 0 0.776
+                        0 0 0 0 0.157
+                        0 0 0 0 0.208
+                        -0.2126 -0.7152 -0.0722 0 1"/>
+            </filter>
+          </defs>
+          <image
+            href="https://aochan52.github.io/xbp/digi_fab/images/0_XBlogo.png"
+            width="542"
+            height="553"
+            filter="url(#red-logo)"/>
         </svg>
+        <div class="logo-caption">X BUSINESS / RED LOGO</div>
       </div>
     </div>
 
@@ -490,59 +480,106 @@
             <div class="label">SELECTED WORKS</div>
             <h2>制作したもの</h2>
           </div>
+        </div>
 
-          <div class="section-actions">
-            <a class="all-link" href="#works">すべての作品　↗</a>
-            <div class="slider-buttons">
-              <button class="slider-button" type="button" aria-label="前の作品" data-slide="-1">‹</button>
-              <button class="slider-button" type="button" aria-label="次の作品" data-slide="1">›</button>
+        <div class="work-category">
+          <div class="category-heading">
+            <div class="category-title">
+              <h3>デジタルファブリケーション</h3>
+              <p>3Dプリンターやレーザーカッターを使った作品</p>
             </div>
+
+            <div class="slider-buttons">
+              <button class="slider-button" type="button" aria-label="前の作品"
+                data-slide="-1" data-target="#digital-fab-slider">‹</button>
+              <button class="slider-button" type="button" aria-label="次の作品"
+                data-slide="1" data-target="#digital-fab-slider">›</button>
+            </div>
+          </div>
+
+          <div class="projects" id="digital-fab-slider" tabindex="0"
+            aria-label="デジタルファブリケーション作品。左右にスクロールできます">
+
+            <a class="project" href="./1.html">
+              <div class="project-image">
+                <img src="./images/CD580A4E-8CE2-4305-8BE3-6500DBCEDFF5.jpeg"
+                  alt="線香花火用ピンセットの写真">
+              </div>
+              <div class="project-meta">
+                <span>3D PRINTING</span><span>01</span>
+              </div>
+              <h3>線香花火ピンセット</h3>
+              <p>指先のかたちをした、小さな道具。</p>
+            </a>
+
+            <a class="project" href="#works">
+              <div class="project-image">
+                <svg viewBox="0 0 180 180" aria-hidden="true">
+                  <path d="M44 54 L136 54 L126 145 L54 145Z"
+                    fill="#fff" stroke="#555d58" stroke-width="3"/>
+                  <path d="M60 43 L120 43 L136 54 L44 54Z"
+                    fill="#d9dfda" stroke="#555d58" stroke-width="3"/>
+                  <path d="M67 71h46M64 87h52M62 103h55M60 119h58"
+                    stroke="#9ba69d" stroke-width="3"/>
+                  <circle cx="90" cy="32" r="8" fill="#c62835"/>
+                </svg>
+              </div>
+              <div class="project-meta">
+                <span>LASER CUTTING</span><span>02</span>
+              </div>
+              <h3>レーザーカット作品</h3>
+              <p>素材と形を試した制作記録。</p>
+            </a>
+
+            <a class="project" href="#works">
+              <div class="project-image">
+                <svg viewBox="0 0 180 180" aria-hidden="true">
+                  <path d="M50 131 L90 45 L130 131Z"
+                    fill="#fff" stroke="#a66f54" stroke-width="3"/>
+                  <path d="M65 118 L90 70 L115 118Z"
+                    fill="#f4ddd1" stroke="#a66f54" stroke-width="3"/>
+                  <circle cx="90" cy="109" r="8" fill="#c62835"/>
+                  <path d="M40 144h100" stroke="#a66f54" stroke-width="3"/>
+                </svg>
+              </div>
+              <div class="project-meta">
+                <span>PROTOTYPE</span><span>03</span>
+              </div>
+              <h3>アイデアの試作</h3>
+              <p>考えて、つくって、改善する。</p>
+            </a>
           </div>
         </div>
 
-        <div class="projects" id="project-slider" tabindex="0"
-          aria-label="制作したもの。左右にスクロールできます">
+        
+<div class="work-category">
+  <div class="category-heading">
+    <div class="category-title">
+      <h3>デザイン演習</h3>
+      <p>アイデアやデザインを形にした作品</p>
+    </div>
+  </div>
 
-          <a class="project" href="red-tweezer-design.html">
-            <div class="project-image">
-              <svg viewBox="0 0 180 180" aria-hidden="true">
-                <path d="M49 157 Q50 125 62 94 L84 31 Q89 18 100 24 Q110 30 105 42 L87 94 Q105 59 119 38 Q127 27 137 34 Q146 42 138 53 L111 101 Q129 72 141 64 Q151 57 158 67 Q164 77 153 88 L130 117 Q117 134 123 157Z"
-                  fill="#fffdfa" stroke="#c62835" stroke-width="4"/>
-                <path d="M79 157 Q99 142 123 157" fill="none" stroke="#c62835" stroke-width="4"/>
-              </svg>
-            </div>
-            <div class="project-meta"><span>3D PRINTING</span><span>01</span></div>
-            <h3>線香花火ピンセット</h3>
-            <p>指先のかたちをした、小さな道具。</p>
-          </a>
+  <div class="projects">
+    <a class="project" href="./2.html">
+      <div class="project-image">
+        <img src="./images/IMG_5404.jpeg" alt="路上観察">
+      </div>
 
-          <a class="project" href="#works">
-            <div class="project-image">
-              <svg viewBox="0 0 180 180" aria-hidden="true">
-                <path d="M44 54 L136 54 L126 145 L54 145Z" fill="#fff" stroke="#555d58" stroke-width="3"/>
-                <path d="M60 43 L120 43 L136 54 L44 54Z" fill="#d9dfda" stroke="#555d58" stroke-width="3"/>
-                <path d="M67 71h46M64 87h52M62 103h55M60 119h58" stroke="#9ba69d" stroke-width="3"/>
-                <circle cx="90" cy="32" r="8" fill="#c62835"/>
-              </svg>
-            </div>
-            <div class="project-meta"><span>LASER CUTTING</span><span>02</span></div>
-            <h3>レーザーカット作品</h3>
-            <p>素材と形を試した制作記録。</p>
-          </a>
+      <div class="project-meta">
+        <span>DESIGN</span>
+        <span>01</span>
+      </div>
 
-          <a class="project" href="#works">
-            <div class="project-image">
-              <svg viewBox="0 0 180 180" aria-hidden="true">
-                <path d="M50 131 L90 45 L130 131Z" fill="#fff" stroke="#a66f54" stroke-width="3"/>
-                <path d="M65 118 L90 70 L115 118Z" fill="#f4ddd1" stroke="#a66f54" stroke-width="3"/>
-                <circle cx="90" cy="109" r="8" fill="#c62835"/>
-                <path d="M40 144h100" stroke="#a66f54" stroke-width="3"/>
-              </svg>
-            </div>
-            <div class="project-meta"><span>PROTOTYPE</span><span>03</span></div>
-            <h3>アイデアの試作</h3>
-            <p>考えて、つくって、改善する。</p>
-          </a>
+      <h3>路上観察</h3>
+      <p>街を歩いて見つけた看板</p>
+    </a>
+  </div>
+</div>
+        
+  
+  
+          </div>
         </div>
       </div>
     </section>
@@ -566,10 +603,9 @@
   </footer>
 
   <script>
-    const slider = document.querySelector("#project-slider");
-
     document.querySelectorAll("[data-slide]").forEach((button) => {
       button.addEventListener("click", () => {
+        const slider = document.querySelector(button.dataset.target);
         const card = slider.querySelector(".project");
         const gap = 18;
 
@@ -583,8 +619,10 @@
     });
   </script>
 </body>
-</html>
-    
+</html> 
+</head>
+<body>
+
 </head>
 <body>
     <logotohome>
